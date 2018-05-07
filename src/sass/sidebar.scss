@@ -1,0 +1,257 @@
+#wrapper
+{
+  padding-left : 0;
+  transition   : all 0.5s ease;
+
+  &.toggled
+  {
+    //padding-left: 250px;
+    #sidebar-wrapper
+    {
+      width    : 100vw;
+      position : relative;
+    }
+
+    #page-content-wrapper
+    {
+      //position: fixed;
+      height : auto;
+    }
+    .content-area
+    {
+      display : none;
+    }
+  }
+}
+
+#sidebar-wrapper
+{
+  border-right     : 1px solid #eee;
+  color            : rgba(white, 0.7);
+  box-sizing       : border-box;
+  z-index          : 1000;
+  position         : fixed;
+  left             : 250px;
+  top              : 60px;
+  width            : 0;
+  height           : calc(100% - 60px);
+
+  margin-left      : -250px;
+  overflow-y       : auto;
+  transition       : all 0.5s ease;
+  background-color : $shaft-sidebar-background;
+
+  .text-muted
+  {
+    color : rgba(white, 0.5) !important;
+  }
+
+  ul > li > a
+  {
+
+    .arrow.open:before
+    {
+      color        : #919091 !important;
+      float        : right;
+      margin-top   : 1px;
+      margin-right : 3px;
+      display      : inline;
+      height       : auto;
+      font-size    : 25px;
+      content      : " ";
+      font-weight  : 300;
+      text-shadow  : none;
+    }
+
+    .arrow:before
+    {
+      color        : #919091 !important;
+      float        : right;
+      margin-top   : 1px;
+      margin-right : 5px;
+      display      : inline;
+      font-size    : 1rem;
+      height       : auto;
+      content      : "   ";
+      font-weight  : 500;
+      text-shadow  : none;
+    }
+
+  }
+
+}
+
+/* Sidebar Styles */
+
+.menu-toggle
+{
+  cursor : pointer;
+}
+
+.sidebar-menu
+{
+  list-style : none;
+  margin     : 0;
+  padding    : 0;
+
+  li
+  {
+    position : relative;
+    margin   : 0;
+    padding  : 0;
+
+    &:last-child a
+    {
+      border-bottom : 1px solid transparent;
+    }
+
+    a
+    {
+      text-decoration : none;
+      padding-top     : 12px;
+      padding-bottom  : 12px;
+      display         : block;
+      border-bottom   : 1px solid darken($shaft-sidebar-background, 5%);
+
+      color           : white;
+      opacity         : 0.7;
+      .fa
+      {
+        width : 20px;
+
+        &.fa-angle-left
+        {
+          width        : auto;
+          height       : auto;
+          padding      : 0;
+          margin-right : 10px;
+          margin-top   : 3px;
+        }
+      }
+
+    }
+  }
+
+  > li:hover > a, > li.active > a
+  {
+    opacity    : 1;
+    background : darken($shaft-sidebar-background, 5%);
+  }
+
+  li.active > a > .fa-angle-left
+  {
+    transform : rotate(-90deg);
+  }
+
+  li.active > .sidebar-submenu
+  {
+    display : block;
+  }
+
+  .sidebar-submenu
+  {
+    display      : none;
+    list-style   : none;
+    padding-left : 0px;
+
+    background   : darken($shaft-sidebar-background, 5%);
+
+    li > a
+    {
+      color       : rgba(white, 0.7);
+      opacity     : 1;
+      border-top  : 1px solid $shaft-sidebar-background;
+      padding     : 5px 5px 5px 38px;
+      display     : block;
+      line-height : 35px;
+      fa
+      {
+        width : 20px;
+
+        &.fa-angle-left, &.fa-angle-down
+        {
+          width : auto;
+        }
+      }
+
+    }
+
+    li.active a, li a:hover
+    {
+      color : white;
+    }
+
+    .sidebar-submenu
+    {
+      padding-left : 20px;
+    }
+
+  }
+
+}
+
+@include media-breakpoint-up(md)
+{
+  #wrapper
+  {
+    padding-left : 240px;
+
+    #sidebar-wrapper
+    {
+      border-right : 0px solid #eee;
+      width        : 250px;
+      top          : 0;
+
+      height       : 100%;
+    }
+
+    #page-content-wrapper
+    {
+      padding-top : 0px;
+      position    : relative;
+    }
+
+    &.toggled
+    {
+      padding-left : 0;
+
+      #sidebar-wrapper
+      {
+        width    : 0;
+        position : fixed;
+      }
+
+      .content-area
+      {
+        display : block;
+      }
+
+      #page-content-wrapper
+      {
+        position     : relative;
+        margin-right : 0;
+      }
+    }
+  }
+
+}
+
+/**
+ * Main Styles
+ */
+.content-area
+{
+  @include media-breakpoint-up('md')
+  {
+    margin-left : 10px;
+  }
+}
+
+#wrapper.toggled .content-area
+{
+  @include media-breakpoint-up('md')
+  {
+    margin-left : 0px;
+  }
+
+}

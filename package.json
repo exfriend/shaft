@@ -1,0 +1,15 @@
+{
+  "name": "shaft",
+  "version": "0.1.0",
+  "description": "Bootstrap 4 sidebar",
+  "main": "src/js/sidebar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bootstrap",
+    "sidebar"
+  ],
+  "author": "exfriend <i@zlad.tk>",
+  "license": "MIT"
+}
